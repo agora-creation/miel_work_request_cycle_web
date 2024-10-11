@@ -16,11 +16,11 @@ class Step1Screen extends StatefulWidget {
 }
 
 class _Step1ScreenState extends State<Step1Screen> {
-  TextEditingController shopName = TextEditingController();
-  TextEditingController shopUserName = TextEditingController();
-  TextEditingController shopUserEmail = TextEditingController();
-  TextEditingController shopUserTel = TextEditingController();
-  TextEditingController remarks = TextEditingController();
+  TextEditingController companyName = TextEditingController();
+  TextEditingController companyUserName = TextEditingController();
+  TextEditingController companyUserEmail = TextEditingController();
+  TextEditingController companyUserTel = TextEditingController();
+  TextEditingController companyAddress = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +42,32 @@ class _Step1ScreenState extends State<Step1Screen> {
               ResponsiveBox(
                 children: [
                   const Text('以下のフォームにご入力いただき、申込を行なってください。'),
+                  const SizedBox(height: 16),
+                  const DottedDivider(),
+                  const SizedBox(height: 16),
+                  const Text(
+                    '申込者情報',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   FormLabel(
                     '店舗名',
                     child: CustomTextField(
-                      controller: shopName,
+                      controller: companyName,
                       textInputType: TextInputType.text,
                       maxLines: 1,
-                      hintText: '例）黒潮水産',
+                      hintText: '例）明神水産',
                     ),
                   ),
                   const SizedBox(height: 8),
                   FormLabel(
                     '使用者名',
                     child: CustomTextField(
-                      controller: shopUserName,
+                      controller: companyUserName,
                       textInputType: TextInputType.text,
                       maxLines: 1,
                       hintText: '例）田中太郎',
@@ -66,7 +77,7 @@ class _Step1ScreenState extends State<Step1Screen> {
                   FormLabel(
                     '使用者メールアドレス',
                     child: CustomTextField(
-                      controller: shopUserEmail,
+                      controller: companyUserEmail,
                       textInputType: TextInputType.text,
                       maxLines: 1,
                       hintText: '例）tanaka@hirome.co.jp',
@@ -83,21 +94,19 @@ class _Step1ScreenState extends State<Step1Screen> {
                   FormLabel(
                     '使用者電話番号',
                     child: CustomTextField(
-                      controller: shopUserTel,
+                      controller: companyUserTel,
                       textInputType: TextInputType.text,
                       maxLines: 1,
                       hintText: '例）090-0000-0000',
                     ),
                   ),
-                  const SizedBox(height: 24),
-                  const DottedDivider(),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                   FormLabel(
-                    'その他連絡事項',
+                    '住所',
                     child: CustomTextField(
-                      controller: remarks,
-                      textInputType: TextInputType.multiline,
-                      maxLines: null,
+                      controller: companyAddress,
+                      textInputType: TextInputType.text,
+                      maxLines: 1,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -114,11 +123,11 @@ class _Step1ScreenState extends State<Step1Screen> {
                         PageTransition(
                           type: PageTransitionType.rightToLeft,
                           child: Step2Screen(
-                            shopName: shopName.text,
-                            shopUserName: shopUserName.text,
-                            shopUserEmail: shopUserEmail.text,
-                            shopUserTel: shopUserTel.text,
-                            remarks: remarks.text,
+                            companyName: companyName.text,
+                            companyUserName: companyUserName.text,
+                            companyUserEmail: companyUserEmail.text,
+                            companyUserTel: companyUserTel.text,
+                            companyAddress: companyAddress.text,
                           ),
                         ),
                       );

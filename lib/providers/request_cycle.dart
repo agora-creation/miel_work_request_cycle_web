@@ -10,27 +10,26 @@ class RequestCycleProvider with ChangeNotifier {
   final FmService _fmService = FmService();
 
   Future<String?> create({
-    required String shopName,
-    required String shopUserName,
-    required String shopUserEmail,
-    required String shopUserTel,
-    required String remarks,
+    required String companyName,
+    required String companyUserName,
+    required String companyUserEmail,
+    required String companyUserTel,
+    required String companyAddress,
   }) async {
     String? error;
-    if (shopName == '') return '店舗名は必須入力です';
-    if (shopUserName == '') return '使用者名は必須入力です';
-    if (shopUserEmail == '') return '使用者メールアドレスは必須入力です';
-    if (shopUserTel == '') return '使用者電話番号は必須入力です';
+    if (companyName == '') return '店舗名は必須入力です';
+    if (companyUserName == '') return '使用者名は必須入力です';
+    if (companyUserEmail == '') return '使用者メールアドレスは必須入力です';
+    if (companyUserTel == '') return '使用者電話番号は必須入力です';
     try {
       await FirebaseAuth.instance.signInAnonymously().then((value) {
         String id = _cycleService.id();
         _cycleService.create({
           'id': id,
-          'shopName': shopName,
-          'shopUserName': shopUserName,
-          'shopUserEmail': shopUserEmail,
-          'shopUserTel': shopUserTel,
-          'remarks': remarks,
+          'companyName': companyName,
+          'companyUserName': companyUserName,
+          'companyUserEmail': companyUserEmail,
+          'companyUserTel': companyUserTel,
           'approval': 0,
           'approvedAt': DateTime.now(),
           'approvalUsers': [],

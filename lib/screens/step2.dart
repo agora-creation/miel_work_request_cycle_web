@@ -13,18 +13,18 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class Step2Screen extends StatefulWidget {
-  final String shopName;
-  final String shopUserName;
-  final String shopUserEmail;
-  final String shopUserTel;
-  final String remarks;
+  final String companyName;
+  final String companyUserName;
+  final String companyUserEmail;
+  final String companyUserTel;
+  final String companyAddress;
 
   const Step2Screen({
-    required this.shopName,
-    required this.shopUserName,
-    required this.shopUserEmail,
-    required this.shopUserTel,
-    required this.remarks,
+    required this.companyName,
+    required this.companyUserName,
+    required this.companyUserEmail,
+    required this.companyUserTel,
+    required this.companyAddress,
     super.key,
   });
 
@@ -54,32 +54,41 @@ class _Step2ScreenState extends State<Step2Screen> {
               ResponsiveBox(
                 children: [
                   const Text('以下の申込内容で問題ないかご確認ください。'),
+                  const SizedBox(height: 16),
+                  const DottedDivider(),
+                  const SizedBox(height: 16),
+                  const Text(
+                    '申込者情報',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
                   const SizedBox(height: 8),
                   FormLabel(
                     '店舗名',
-                    child: FormValue(widget.shopName),
+                    child: FormValue(widget.companyName),
                   ),
                   const SizedBox(height: 8),
                   FormLabel(
                     '使用者名',
-                    child: FormValue(widget.shopUserName),
+                    child: FormValue(widget.companyUserName),
                   ),
                   const SizedBox(height: 8),
                   FormLabel(
                     '使用者メールアドレス',
-                    child: FormValue(widget.shopUserEmail),
+                    child: FormValue(widget.companyUserEmail),
                   ),
                   const SizedBox(height: 8),
                   FormLabel(
                     '使用者電話番号',
-                    child: FormValue(widget.shopUserTel),
+                    child: FormValue(widget.companyUserTel),
                   ),
-                  const SizedBox(height: 24),
-                  const DottedDivider(),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                   FormLabel(
-                    'その他連絡事項',
-                    child: FormValue(widget.remarks),
+                    '住所',
+                    child: FormValue(widget.companyAddress),
                   ),
                   const SizedBox(height: 16),
                   const DottedDivider(),
@@ -91,11 +100,11 @@ class _Step2ScreenState extends State<Step2Screen> {
                     backgroundColor: kBlueColor,
                     onPressed: () async {
                       String? error = await cycleProvider.create(
-                        shopName: widget.shopName,
-                        shopUserName: widget.shopUserName,
-                        shopUserEmail: widget.shopUserEmail,
-                        shopUserTel: widget.shopUserTel,
-                        remarks: widget.remarks,
+                        companyName: widget.companyName,
+                        companyUserName: widget.companyUserName,
+                        companyUserEmail: widget.companyUserEmail,
+                        companyUserTel: widget.companyUserTel,
+                        companyAddress: widget.companyAddress,
                       );
                       if (error != null) {
                         if (!mounted) return;
