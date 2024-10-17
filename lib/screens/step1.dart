@@ -45,7 +45,7 @@ class _Step1ScreenState extends State<Step1Screen> {
               const SizedBox(height: 24),
               ResponsiveBox(
                 children: [
-                  const Text('以下のフォームにご入力いただき、申込を行なってください。'),
+                  const Text('以下のフォームにご入力いただき、使用規約を確認して申込を行なってください。'),
                   const SizedBox(height: 16),
                   const DottedDivider(),
                   const SizedBox(height: 16),
@@ -94,7 +94,8 @@ class _Step1ScreenState extends State<Step1Screen> {
                     '※このメールアドレス宛に、返答させていただきます',
                     style: TextStyle(
                       color: kRedColor,
-                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -116,6 +117,91 @@ class _Step1ScreenState extends State<Step1Screen> {
                       controller: companyAddress,
                       textInputType: TextInputType.text,
                       maxLines: 1,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const DottedDivider(),
+                  const SizedBox(height: 16),
+                  const Text(
+                    '使用規約',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    '※自転車の出入り時は必ず門扉の施錠をする事',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const Text(
+                    '※当自転車置き場にゴミを捨てない',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const Text(
+                    '※自転車を整理整頓して置く',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const Text(
+                    '※自転車を長期放置しない(告知文書を貼って2週間以上)',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const Text(
+                    '※上記の放置自転車については撤去します',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const Text(
+                    '※自転車の施錠をする',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const Text(
+                    '※他人の門扉の施錠番号を教えない',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const Text(
+                    '※盗難・悪戯・故障につきましては弊社は責任を負えません',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
+                    ),
+                  ),
+                  const Text(
+                    '※駐輪スペースには限りがありますので駐輪できない時はご了承ください',
+                    style: TextStyle(
+                      color: kRedColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'SourceHanSansJP-Bold',
                     ),
                   ),
                   const SizedBox(height: 16),

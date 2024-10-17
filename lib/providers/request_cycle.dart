@@ -2,12 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:miel_work_request_cycle_web/models/user.dart';
 import 'package:miel_work_request_cycle_web/services/fm.dart';
+import 'package:miel_work_request_cycle_web/services/mail.dart';
 import 'package:miel_work_request_cycle_web/services/request_cycle.dart';
 import 'package:miel_work_request_cycle_web/services/user.dart';
 
 class RequestCycleProvider with ChangeNotifier {
   final RequestCycleService _cycleService = RequestCycleService();
   final UserService _userService = UserService();
+  final MailService _mailService = MailService();
   final FmService _fmService = FmService();
 
   Future<String?> check({
@@ -53,6 +55,29 @@ class RequestCycleProvider with ChangeNotifier {
           'approvalUsers': [],
           'createdAt': DateTime.now(),
         });
+      });
+      String message = '''
+★★★このメールは自動返信メールです★★★
+
+自転車置き場使用申込が完了いたしました。
+以下申込内容を確認し、ご返信させていただきますので今暫くお待ちください。
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■申込者情報
+【店舗名】$companyName
+【使用者名】$companyUserName
+【使用者メールアドレス】$companyUserEmail
+【使用者電話番号】$companyUserTel
+【住所】$companyAddress
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      ''';
+      _mailService.create({
+        'id': _mailService.id(),
+        'to': companyUserEmail,
+        'subject': '【自動送信】自転車置き場使用申込完了のお知らせ',
+        'message': message,
+        'createdAt': DateTime.now(),
+        'expirationAt': DateTime.now().add(const Duration(hours: 1)),
       });
       //通知
       List<UserModel> sendUsers = [];
