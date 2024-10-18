@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:miel_work_request_cycle_web/common/functions.dart';
 import 'package:miel_work_request_cycle_web/common/style.dart';
+import 'package:miel_work_request_cycle_web/models/request_cycle.dart';
 import 'package:miel_work_request_cycle_web/providers/request_cycle.dart';
 import 'package:miel_work_request_cycle_web/screens/step2.dart';
+import 'package:miel_work_request_cycle_web/services/request_cycle.dart';
 import 'package:miel_work_request_cycle_web/widgets/custom_button.dart';
 import 'package:miel_work_request_cycle_web/widgets/custom_text_field.dart';
 import 'package:miel_work_request_cycle_web/widgets/dotted_divider.dart';
@@ -19,11 +21,31 @@ class Step1Screen extends StatefulWidget {
 }
 
 class _Step1ScreenState extends State<Step1Screen> {
+  RequestCycleService cycleService = RequestCycleService();
   TextEditingController companyName = TextEditingController();
   TextEditingController companyUserName = TextEditingController();
   TextEditingController companyUserEmail = TextEditingController();
   TextEditingController companyUserTel = TextEditingController();
   TextEditingController companyAddress = TextEditingController();
+
+  void _getPrm() async {
+    String? id = Uri.base.queryParameters['id'];
+    if (id == null) return;
+    RequestCycleModel? cycle = await cycleService.selectData(id);
+    if (cycle == null) return;
+    companyName.text = cycle.companyName;
+    companyUserName.text = cycle.companyUserName;
+    companyUserEmail.text = cycle.companyUserEmail;
+    companyUserTel.text = cycle.companyUserTel;
+    companyAddress.text = cycle.companyAddress;
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    _getPrm();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
