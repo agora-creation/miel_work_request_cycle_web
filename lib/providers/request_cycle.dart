@@ -55,8 +55,7 @@ class RequestCycleProvider with ChangeNotifier {
           'approvalUsers': [],
           'createdAt': DateTime.now(),
         });
-      });
-      String message = '''
+        String message = '''
 ★★★このメールは自動返信メールです★★★
 
 自転車置き場使用申込が完了いたしました。
@@ -71,13 +70,14 @@ class RequestCycleProvider with ChangeNotifier {
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
       ''';
-      _mailService.create({
-        'id': _mailService.id(),
-        'to': companyUserEmail,
-        'subject': '【自動送信】自転車置き場使用申込完了のお知らせ',
-        'message': message,
-        'createdAt': DateTime.now(),
-        'expirationAt': DateTime.now().add(const Duration(hours: 1)),
+        _mailService.create({
+          'id': _mailService.id(),
+          'to': companyUserEmail,
+          'subject': '【自動送信】自転車置き場使用申込完了のお知らせ',
+          'message': message,
+          'createdAt': DateTime.now(),
+          'expirationAt': DateTime.now().add(const Duration(hours: 1)),
+        });
       });
       //通知
       List<UserModel> sendUsers = [];
