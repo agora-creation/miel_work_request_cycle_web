@@ -50,6 +50,7 @@ class RequestCycleProvider with ChangeNotifier {
           'companyUserName': companyUserName,
           'companyUserEmail': companyUserEmail,
           'companyUserTel': companyUserTel,
+          'companyAddress': companyAddress,
           'lockNumber': '',
           'approval': 0,
           'approvedAt': DateTime.now(),
